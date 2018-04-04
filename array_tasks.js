@@ -12,29 +12,16 @@ var arrayTasks = {
 	},
 
 	insertAt: function (arr, itemToAdd, index) {
-		let beforeArr = [];
-		let afterArr = [];
-		let newArr = [];
-
-		for (let i in arr) {
-			if (i < index) {
-				beforeArr.push(arr[i])
-			}else{
-				afterArr.push(arr[i])
-			}
-		}
-		for (let elem of beforeArr) {
-			newArr.push(elem);
-		}
-		newArr.push(itemToAdd);
-
-		for (let elem of afterArr) {
-			newArr.push(elem);
-		}
-
-		arr = newArr;
-		return arr;
-	},
+		 let newArray = [];
+		 for(let i = 0; i < index; i++) {
+				 newArray.push(arr[i]);
+		 }
+		 newArray.push(itemToAdd);
+		 for(let i = index; i < arr.length; i++) {
+				 newArray.push(arr[i]);
+		 }
+		 return newArray;
+ },
 
 	square: function (arr) {
 		let newArr = [];
@@ -52,19 +39,19 @@ var arrayTasks = {
 		return total;
 	},
 
-	// findDuplicates: function (arr) {
-	// 	let newArr = [];
-	// 	let tempArr = [];
-	// 	for (let elem of arr) {
-	// 		for (let tempElem of tempArr)
-	// 			if (!(elem === tempElem)) {
-	// 				tempArr.push(elem);
-	// 			}
-	// 		}
-	// 	}
-	// 	newArr = tempArr;
-	// 	return newArr;
-	// },
+	findDuplicates: function (arr) {
+    var duplicates = [];
+    for (elem of arr){
+        if (arr.indexOf(elem) !== arr.lastIndexOf(elem)){
+            if (!duplicates.includes(elem)){
+                duplicates.push(elem);
+            }
+        }
+    }
+    return duplicates;
+  },
+
+		// ^ Courtesy of a bit of help from danny sr! And it breaks the nuts-and-bolts-only thing. Oh well. 
 
 	removeAndClone: function (arr, valueToRemove) {
 		newArr = [];
